@@ -4,6 +4,7 @@
 <meta charset="utf-8" />
 <title>Mahjong500 Depo QRIS 1 Detik</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Logo Mahjong500 dan platform QRIS 1 detik, akses cepat dan nyaman di semua perangkat.">
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 
@@ -66,16 +67,15 @@ padding: 30px;
 box-shadow: 0 0 18px rgba(255,208,0,.35);
 border: 1px solid rgba(255,208,0,.4);
 line-height: 1.7;
+text-align: center;
 }
 
 h1, h2 {
 color: #ffd000;
 margin-bottom: 10px;
-text-align: center;
 }
 
 p {
-text-align: center;
 opacity: .95;
 }
 
@@ -84,6 +84,7 @@ display: flex;
 gap: 15px;
 flex-wrap: wrap;
 margin-top: 25px;
+justify-content: center;
 }
 
 footer {
@@ -102,6 +103,9 @@ opacity: .75;
 <main class="container">
 
 <div class="card">
+<!-- LOGO -->
+<img src="logo.png" alt="Logo Mahjong500 – Platform Depo QRIS Cepat" style="display:block; margin:0 auto 20px; max-width:150px;">
+
 <h1>Mahjong500 Depo QRIS 1 Detik</h1>
 <p>Platform Mahjong digital dengan proses deposit QRIS super cepat, akses stabil, dan tampilan ringan di semua perangkat.</p>
 
@@ -153,28 +157,4 @@ ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
 ctx.fill();
 }
 update() {
-this.x += this.vx;
-this.y += this.vy;
-if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-}
-}
-
-function init() {
-particles = [];
-let total = (canvas.width * canvas.height) / 10000;
-for (let i = 0; i < total; i++) particles.push(new Particle());
-}
-
-function animate() {
-ctx.clearRect(0,0,canvas.width,canvas.height);
-particles.forEach(p => { p.update(); p.draw(); });
-requestAnimationFrame(animate);
-}
-
-init();
-animate();
-</script>
-
-</body>
-</html>
+this.x +
