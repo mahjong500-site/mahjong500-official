@@ -4,20 +4,22 @@
 <meta charset="utf-8" />
 <title>Mahjong500 Depo QRIS 1 Detik</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="Logo Mahjong500 dan platform QRIS 1 detik, akses cepat dan nyaman di semua perangkat.">
+<meta name="description" content="Mahjong500 – Platform digital slot dengan deposit QRIS super cepat, stabil, dan ringan. Nikmati pengalaman bermain yang nyaman dan aman di semua perangkat.">
+<meta name="google-site-verification" content="1iZPss0MLprqEKKLjIirf1EQHvIvvhNtGxLUg0Y641w" />
+<meta name="robots" content="index, follow">
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
 * { margin:0; padding:0; box-sizing:border-box; font-family:"Montserrat",sans-serif; }
-body { color:#fff; overflow-x:hidden; }
+body { color:#fff; overflow-x:hidden; background:#000; }
 
 /* BACKGROUND */
 .bg-gradient-dark {
 background: radial-gradient(circle at top left, #1b1b1b, #000 65%);
 }
 
-/* PARTICLE */
+/* PARTICLE CANVAS */
 #particles-js {
 position: fixed;
 inset: 0;
@@ -70,7 +72,7 @@ line-height: 1.7;
 text-align: center;
 }
 
-h1, h2 {
+h1, h2, h3 {
 color: #ffd000;
 margin-bottom: 10px;
 }
@@ -106,8 +108,12 @@ opacity: .75;
 <!-- LOGO -->
 <img src="logo.png" alt="Logo Mahjong500 – Platform Depo QRIS Cepat" style="display:block; margin:0 auto 20px; max-width:150px;">
 
-<h1>Mahjong500 Depo QRIS 1 Detik</h1>
-<p>Platform Mahjong digital dengan proses deposit QRIS super cepat, akses stabil, dan tampilan ringan di semua perangkat.</p>
+<!-- Heading SEO -->
+<h1>Mahjong500 – Depo QRIS 1 Detik</h1>
+<h2>Platform Slot Digital Cepat dan Aman</h2>
+<h3>Login dan Daftar Sekarang untuk Memulai</h3>
+
+<p>Platform Mahjong digital dengan proses deposit QRIS super cepat, akses stabil, dan tampilan ringan di semua perangkat. Nikmati pengalaman bermain yang nyaman tanpa hambatan di komputer, tablet, maupun smartphone.</p>
 
 <div class="btn-group">
 <a href="https://mez.ink/mahjong500login" style="flex:1">
@@ -121,7 +127,7 @@ opacity: .75;
 
 <div class="card">
 <h2>Keunggulan Mahjong500</h2>
-<p>Transaksi QRIS instan, sistem responsif, dan pengalaman bermain yang nyaman tanpa hambatan.</p>
+<p>Transaksi QRIS instan, sistem responsif, dan pengalaman bermain yang nyaman tanpa hambatan. Semua fitur dirancang untuk memberikan kemudahan dan keamanan maksimal bagi pemain.</p>
 </div>
 
 </main>
@@ -134,27 +140,83 @@ opacity: .75;
 const canvas = document.getElementById("particles-js");
 const ctx = canvas.getContext("2d");
 let particles = [];
+let neonLines = [];
 
 function resize() {
-canvas.width = innerWidth;
-canvas.height = innerHeight;
+    canvas.width = innerWidth;
+    canvas.height = innerHeight;
 }
 window.addEventListener("resize", resize);
 resize();
 
+// Partikel emas
 class Particle {
-constructor() {
-this.x = Math.random() * canvas.width;
-this.y = Math.random() * canvas.height;
-this.size = Math.random() * 2 + 0.5;
-this.vx = (Math.random() - 0.5) * 0.4;
-this.vy = (Math.random() - 0.5) * 0.4;
+    constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2 + 0.5;
+        this.vx = (Math.random() - 0.5) * 0.4;
+        this.vy = (Math.random() - 0.5) * 0.4;
+    }
+    draw() {
+        ctx.fillStyle = "rgba(255,215,0,0.7)";
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+    }
+    update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+    }
 }
-draw() {
-ctx.fillStyle = "rgba(255,215,0,0.7)";
-ctx.beginPath();
-ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-ctx.fill();
+
+// Cahaya biru jalan cepat
+class NeonLine {
+    constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.length = Math.random() * 80 + 50;
+        this.vx = (Math.random() * 2 + 2); // kecepatan tinggi
+        this.color = "rgba(0, 200, 255, 0.6)";
+    }
+    draw() {
+        ctx.strokeStyle = this.color;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(this.x, this.y);
+        ctx.lineTo(this.x - this.length, this.y);
+        ctx.stroke();
+    }
+    update() {
+        this.x += this.vx;
+        if (this.x - this.length > canvas.width) {
+            this.x = -this.length;
+            this.y = Math.random() * canvas.height;
+        }
+    }
 }
-update() {
-this.x +
+
+function init() {
+    particles = [];
+    neonLines = [];
+    let totalParticles = (canvas.width * canvas.height) / 10000;
+    let totalNeon = (canvas.width * canvas.height) / 20000;
+    for (let i = 0; i < totalParticles; i++) particles.push(new Particle());
+    for (let i = 0; i < totalNeon; i++) neonLines.push(new NeonLine());
+}
+
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => { p.update(); p.draw(); });
+    neonLines.forEach(n => { n.update(); n.draw(); });
+    requestAnimationFrame(animate);
+}
+
+init();
+animate();
+</script>
+
+</body>
+</html>
