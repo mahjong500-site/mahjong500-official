@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<title>Mahjong500 Depo QRIS 1 Detik</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+* { margin:0; padding:0; box-sizing:border-box; font-family:"Montserrat",sans-serif; }
+body { color:#fff; overflow-x:hidden; }
+
+/* BACKGROUND */
+.bg-gradient-dark {
+background: radial-gradient(circle at top left, #1b1b1b, #000 65%);
+}
+
+/* PARTICLE */
+#particles-js {
+position: fixed;
+inset: 0;
+z-index: 0;
+pointer-events: none;
+}
+
+/* CONTAINER */
+.container {
+max-width: 960px;
+margin: auto;
+padding: 20px;
+position: relative;
+z-index: 1;
+}
+
+/* BUTTON */
+.action-btn {
+width: 100%;
+padding: 14px;
+border-radius: 8px;
+background: transparent;
+border: 2px solid #ffd000;
+color: #fff;
+font-weight: 700;
+box-shadow: 0 0 10px #ffd000;
+transition: .3s;
+}
+.action-btn:hover {
+transform: scale(1.08);
+box-shadow: 0 0 20px #ffd000 inset;
+cursor: pointer;
+}
+
+/* CONTENT */
+main {
+margin-top: 40px;
+display: flex;
+flex-direction: column;
+gap: 25px;
+}
+
+.card {
+background: rgba(0,0,0,.65);
+border-radius: 14px;
+padding: 30px;
+box-shadow: 0 0 18px rgba(255,208,0,.35);
+border: 1px solid rgba(255,208,0,.4);
+line-height: 1.7;
+}
+
+h1, h2 {
+color: #ffd000;
+margin-bottom: 10px;
+text-align: center;
+}
+
+p {
+text-align: center;
+opacity: .95;
+}
+
+.btn-group {
+display: flex;
+gap: 15px;
+flex-wrap: wrap;
+margin-top: 25px;
+}
+
+footer {
+text-align: center;
+margin: 40px 0 20px;
+font-size: 14px;
+opacity: .75;
+}
+</style>
+</head>
+
+<body class="bg-gradient-dark">
+
+<canvas id="particles-js"></canvas>
+
+<main class="container">
+
+<div class="card">
+<h1>Mahjong500 Depo QRIS 1 Detik</h1>
+<p>Platform Mahjong digital dengan proses deposit QRIS super cepat, akses stabil, dan tampilan ringan di semua perangkat.</p>
+
+<div class="btn-group">
+<a href="https://mez.ink/mahjong500login" style="flex:1">
+<button class="action-btn">LOGIN</button>
+</a>
+<a href="https://bit.ly/m/linkmahjong500" style="flex:1">
+<button class="action-btn">DAFTAR</button>
+</a>
+</div>
+</div>
+
+<div class="card">
+<h2>Keunggulan Mahjong500</h2>
+<p>Transaksi QRIS instan, sistem responsif, dan pengalaman bermain yang nyaman tanpa hambatan.</p>
+</div>
+
+</main>
+
+<footer>
+© 2026 Mahjong500 • Depo QRIS 1 Detik
+</footer>
+
+<script>
+const canvas = document.getElementById("particles-js");
+const ctx = canvas.getContext("2d");
+let particles = [];
+
+function resize() {
+canvas.width = innerWidth;
+canvas.height = innerHeight;
+}
+window.addEventListener("resize", resize);
+resize();
+
+class Particle {
+constructor() {
+this.x = Math.random() * canvas.width;
+this.y = Math.random() * canvas.height;
+this.size = Math.random() * 2 + 0.5;
+this.vx = (Math.random() - 0.5) * 0.4;
+this.vy = (Math.random() - 0.5) * 0.4;
+}
+draw() {
+ctx.fillStyle = "rgba(255,215,0,0.7)";
+ctx.beginPath();
+ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+ctx.fill();
+}
+update() {
+this.x += this.vx;
+this.y += this.vy;
+if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+}
+}
+
+function init() {
+particles = [];
+let total = (canvas.width * canvas.height) / 10000;
+for (let i = 0; i < total; i++) particles.push(new Particle());
+}
+
+function animate() {
+ctx.clearRect(0,0,canvas.width,canvas.height);
+particles.forEach(p => { p.update(); p.draw(); });
+requestAnimationFrame(animate);
+}
+
+init();
+animate();
+</script>
+
+</body>
+</html>
